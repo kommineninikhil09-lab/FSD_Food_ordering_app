@@ -36,3 +36,8 @@ Then open `http://localhost:8080`.
 ## Version control
 
 This project is tracked with Git. Commit changes with descriptive messages and push to the remote repository to track development history.
+
+
+# Login Details 
+    VALID_EMAIL    = admin@gmail.com
+    VALID_PASSWORD = admin123
