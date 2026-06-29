@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Tandoori Lamb Chops",
+    "category": "starters",
+    "price": 18,
+    "description": "Char-grilled lamb chops marinated in smoked spices and yogurt, finished over open flame.",
+    "image": "assets/lamb-chops.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Smoked Paneer Tikka",
+    "category": "starters",
+    "price": 14,
+    "description": "Cottage cheese marinated in charcoal-smoked masala, skewered and seared.",
+    "image": "assets/paneer-tikka.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Butter Chicken",
+    "category": "mains",
+    "price": 22,
+    "description": "Slow-simmered tomato and butter gravy, tandoor-roasted chicken, finished with cream.",
+    "image": "assets/butter-chicken.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Lamb Rogan Josh",
+    "category": "mains",
+    "price": 26,
+    "description": "Kashmiri red chili braised lamb shoulder, slow cooked for six hours.",
+    "image": "assets/rogan-josh.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Truffle Dal Makhani",
+    "category": "mains",
+    "price": 19,
+    "description": "Black lentils simmered overnight, finished with cream and shaved truffle.",
+    "image": "assets/dal-makhani.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Saffron Kulfi",
+    "category": "desserts",
+    "price": 10,
+    "description": "Hand-churned saffron and pistachio kulfi, served on warm rabri.",
+    "image": "assets/kulfi.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Dark Chocolate Gulab Jamun",
+    "category": "desserts",
+    "price": 12,
+    "description": "Classic gulab jamun filled with molten dark chocolate, rosewater syrup.",
+    "image": "assets/gulan-jamun.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Estate Rose Lassi",
+    "category": "beverages",
+    "price": 8,
+    "description": "Churned yogurt, estate-grown rose petals, a whisper of cardamom.",
+    "image": "assets/lassi.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Smoked Old Fashioned Chai",
+    "category": "beverages",
+    "price": 9,
+    "description": "Single-estate Assam tea, smoked over cinnamon bark, served warm.",
+    "image":  "assets/chai.jpg"
+  }
+]
