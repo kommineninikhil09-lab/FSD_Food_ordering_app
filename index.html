@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  if (sessionStorage.getItem('gg_auth') !== '1') {
+    window.location.replace('/login.html');
+  }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GourmetGo — Online Food Ordering</title>
@@ -158,3 +163,165 @@
 <script src="js/app.js"></script>
 </body>
 </html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GourmetGo — Online Food Ordering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar__inner">
+    <a class="navbar__logo" href="#">GourmetGo</a>
+    <nav class="navbar__links">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="navbar__actions">
+      <a class="btn-ghost" href="#menu">Order Now</a>
+      <button class="cart-icon" id="cartToggle" aria-label="Open cart">
+        <span id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero__overline hero__overline--left">Serving Hyderabad</div>
+  <h1 class="hero__title">FLAVORS<br>THAT STAY</h1>
+  <div class="hero__overline hero__overline--right">Established 2022</div>
+</section>
+
+<section class="section section--dark" id="about">
+  <div class="container overlay-block">
+    <h2 class="heading-lg">A table held<br>by candlelight</h2>
+    <p class="body-text">GourmetGo brings slow-cooked, fire-kissed Indian cuisine to your door. Every dish is plated the way it would be in the dining room — now a tap away.</p>
+    <a class="btn-ghost" href="#menu">Explore the Menu</a>
+  </div>
+</section>
+
+<section class="section section--light" id="menu">
+  <div class="container">
+    <div class="section-headline-row">
+      <h2 class="heading-lg">The Menu</h2>
+      <div class="rating-widget">
+        <div class="rating-widget__stars">★★★★★</div>
+        <div class="rating-widget__score">4.7<span>/5</span></div>
+        <div class="rating-widget__label">Excellent<br>Based on 3,576 reviews</div>
+      </div>
+    </div>
+
+    <div class="menu-filters" id="menuFilters">
+      <button class="filter-btn is-active" data-category="all">All</button>
+      <button class="filter-btn" data-category="starters">Starters</button>
+      <button class="filter-btn" data-category="mains">Mains</button>
+      <button class="filter-btn" data-category="desserts">Desserts</button>
+      <button class="filter-btn" data-category="beverages">Beverages</button>
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      <p class="menu-status" id="menuStatus">Loading menu…</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--sand" id="reviews">
+  <div class="container">
+    <div class="section-headline-row">
+      <h2 class="heading-lg">Guests say</h2>
+    </div>
+    <div class="review-row">
+      <article class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__stars">★★★★★</div>
+          <span class="review-card__source">Yelp</span>
+        </div>
+        <p class="review-card__body">The Rogan Josh tasted exactly like the dish I've had in their dining room. Packaging kept it piping hot.</p>
+        <div class="review-card__author">— Priya N.</div>
+      </article>
+      <article class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__stars">★★★★★</div>
+          <span class="review-card__source">Reddit</span>
+        </div>
+        <p class="review-card__body">Ordering online was effortless — cart updated instantly, no page reloads, checkout in under a minute.</p>
+        <div class="review-card__author">— Marcus T.</div>
+      </article>
+      <article class="review-card">
+        <div class="review-card__top">
+          <div class="review-card__stars">★★★★★</div>
+          <span class="review-card__source">MapQuest</span>
+        </div>
+        <p class="review-card__body">Saffron kulfi arrived perfectly chilled. This is fine dining delivered with real care.</p>
+        <div class="review-card__author">— Estelle R.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark" id="contact">
+  <div class="container">
+    <div class="section-headline-row">
+      <h2 class="heading-lg">Reserve or<br>order ahead</h2>
+    </div>
+    <form id="contactForm" class="contact-form" novalidate>
+      <div class="form-row">
+        <label for="fullName">Full name</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" required minlength="2">
+        <span class="form-error" data-error-for="fullName"></span>
+      </div>
+      <div class="form-row">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+        <span class="form-error" data-error-for="email"></span>
+      </div>
+      <div class="form-row">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" required pattern="^[0-9+\-\s]{7,15}$">
+        <span class="form-error" data-error-for="phone"></span>
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="3" required minlength="5"></textarea>
+        <span class="form-error" data-error-for="message"></span>
+      </div>
+      <button type="submit" class="btn-ghost">Send Request</button>
+      <p class="form-success" id="formSuccess" hidden>Thank you — your request has been received.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© 2026 GourmetGo. All rights reserved.</span>
+    <span>123 Golden Mile, kokapet, TG</span>
+  </div>
+</footer>
+
+<aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-drawer__header">
+    <h3>Your Order</h3>
+    <button id="cartClose" aria-label="Close cart">✕</button>
+  </div>
+  <div class="cart-drawer__items" id="cartItems">
+    <p class="cart-empty">Your cart is empty.</p>
+  </div>
+  <div class="cart-drawer__footer">
+    <div class="cart-total">Total: <span id="cartTotal">$0.00</span></div>
+    <button class="btn-ghost" id="checkoutBtn">Checkout</button>
+  </div>
+</aside>
+<div class="cart-overlay" id="cartOverlay"></div>
+
+<script src="js/app.js"></script>
+</body>
+</html> -->
