@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GourmetGo — Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-warm-sand: #d8cbb8;
+      --color-charcoal: #2c2c2c;
+      --color-smoke: #dfdad5;
+      --color-obsidian: #292622;
+      --color-ember: #d49653;
+      --color-bark: #615b53;
+      --color-stone: #978e81;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-obsidian);
+      background-image: url('assets/hero-bg.jpg');
+      background-size: contain;
+      background-position: center 60%;
+      font-family: var(--font-sans);
+      font-weight: 500;
+    }
+
+    /* Dark overlay over bg */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 16, 12, 0.72);
+      z-index: 0;
+    }
+
+    .login-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(41, 38, 34, 0.85);
+      border: 1px solid rgba(216, 203, 184, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 56px 48px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 4px;
+    }
+
+    .login-brand {
+      font-family: var(--font-serif);
+      font-weight: 300;
+      font-size: 28px;
+      color: var(--color-warm-sand);
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .login-tagline {
+      font-size: 13px;
+      color: var(--color-stone);
+      margin-bottom: 40px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-stone);
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(216, 203, 184, 0.2);
+      border-radius: 3px;
+      padding: 12px 16px;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-smoke);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input::placeholder { color: var(--color-bark); }
+
+    input:focus {
+      border-color: var(--color-ember);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      background: transparent;
+      border: 1px solid var(--color-warm-sand);
+      color: var(--color-warm-sand);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .login-btn:hover {
+      background: var(--color-warm-sand);
+      color: var(--color-obsidian);
+    }
+
+    .login-error {
+      margin-top: 16px;
+      font-size: 13px;
+      color: #e07a5f;
+      text-align: center;
+      min-height: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .login-hint {
+      margin-top: 24px;
+      font-size: 12px;
+      color: var(--color-bark);
+      text-align: center;
+      border-top: 1px solid rgba(216, 203, 184, 0.1);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="login-brand">GourmetGo</div>
+    <div class="login-tagline">Staff &amp; Admin Access</div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="admin@gmail.com" autocomplete="email">
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+
+    <button class="login-btn" id="loginBtn">Enter</button>
+    <div class="login-error" id="loginError"></div>
+
+    <div class="login-hint">Use your admin credentials to continue</div>
+  </div>
+
+  <script>
+    // If already logged in, skip to landing page
+    if (sessionStorage.getItem('gg_auth') === '1') {
+      window.location.replace('index.html');
+    }
+
+    var VALID_EMAIL    = 'admin@gmail.com';
+    var VALID_PASSWORD = 'admin123';
+
+    document.getElementById('loginBtn').addEventListener('click', attemptLogin);
+
+    // Allow Enter key to submit
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') attemptLogin();
+    });
+
+    function attemptLogin() {
+      var email    = document.getElementById('email').value.trim();
+      var password = document.getElementById('password').value;
+      var errorEl  = document.getElementById('loginError');
+
+      if (email === VALID_EMAIL && password === VALID_PASSWORD) {
+        sessionStorage.setItem('gg_auth', '1');
+        window.location.replace('index.html');
+      } else {
+        errorEl.textContent = 'Invalid email or password. Please try again.';
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+      }
+    }
+  </script>
+
+</body>
+</html>
